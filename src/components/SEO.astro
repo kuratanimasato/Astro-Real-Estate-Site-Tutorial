@@ -1,0 +1,34 @@
+---
+
+const { title, description = "地域に寄り添う不動産会社 Sunrise Estate", image = "/image/ogp.png" } = Astro.props;
+
+const siteName="Sunrise Estate";
+const siteUrl = "https://sunrise-estate.com";
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: siteUrl,
+  logo: `${siteUrl}/image/logo.png`,
+  image: `${siteUrl}/image/ogp.png`,
+  telephone: "03-1234-5678",
+  address: {
+    "@type": "PostalAddress",
+    postalCode: "100-0001",
+    addressRegion: "東京都",
+    addressLocality: "千代田区",
+    streetAddress: "〇〇1-2-3",
+  },
+};
+const ogImage = new URL(image, siteUrl).toString();
+const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
+---
+<meta name="description" content="{description}" />
+<meta property="og:title" content="{title}" />
+<meta property="og:description" content="{description}" />
+<meta property="og:image" content="{ogImage}" />
+<meta property="og:url" content="{pageUrl}" />
+<meta name="twitter:card" content="summary_large_image" /> <meta name="twitter:title" content={title} /> <meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<title>{title}</title>
+<script type="application/ld+json">{JSON.stringify(websiteSchema,organizationSchema)}</script>

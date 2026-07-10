@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, render } from "astro:content";
+import SEO from "../../components/SEO.astro";
+
 
 export async function getStaticPaths() {
   const news = await getCollection("news");
@@ -16,9 +18,11 @@ export async function getStaticPaths() {
 const news = Astro.props;
 
 const { Content } = await render(news);
+
 ---
 
 <BaseLayout title={`${news.data.title} | Sunrise Estate`} description={news.data.description} ogImage={news.data.ogImage}>
+  <SEO title={`${news.data.title} | Sunrise Estate`} description={news.data.description} image={news.data.ogImage} />
   <article class="bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-slate-100 max-auto max-w-4xl">
     <header class="mb-8 border-b border-slate-100 pb-8">
       <h1 class="text-3xl md:text-4xl font-bold text-slate-900 leading-snug">{news.data.title}</h1>
