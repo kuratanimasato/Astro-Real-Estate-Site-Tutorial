@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Service {
+  title: string;
+  description: string;
+  icon: string; // アイコン用にプロパティを追加
+}
+
+const services: Service[] = [
+  {
+    title: "売買仲介",
+    description: "住宅・マンション・土地の売買をプロの視点でサポートいたします。",
+    icon: "🏠",
+  },
+  {
+    title: "賃貸仲介",
+    description: "お客様のライフスタイルに最適なお部屋探しをご提案します。",
+    icon: "🔑",
+  },
+  {
+    title: "賃貸管理",
+    description: "オーナー様の大切な資産を、適正な管理で守り価値を高めます。",
+    icon: "📋"
+  },
+  {
+    title: "不動産コンサルティング",
+    description: "資産運用や土地活用など、長期的な視点でサポートします。",
+    icon: "📈",
+  },
+];
+---
+
+<BaseLayout title="サービス | Sunrise Estate">
+  <div class="py-12 md:py-20 md:grid-cols-3">
+    <header class="text-center mb-16">
+      <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">サービス案内</h1>
+      <p class="text-slate-600 max-w-xl mx-auto">
+        Sunrise Estateでは、お客様のライフスタイルや目的に合わせて幅広い不動産サービスを提供しています。
+      </p>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          services.map((service) => (
+            <article class="bg-white p-8 rounded-2xl border border-slate-200 hover:border-blue-300 transition-all hover:shadow-lg">
+              <div class="text-4xl mb-4">{service.icon}</div>
+              <h3 class="text-xl font-bold text-slate-800 mb-3">{service.title}</h3>
+              <p class="text-slate-600 leading-relaxed">{service.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

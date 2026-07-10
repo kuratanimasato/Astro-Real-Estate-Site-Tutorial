@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+import Contents from '../components/Contents.astro';
+
+---
+
+<BaseLayout title="不動産無料査定キャンペーン | Sunrise Estate">
+<section class="bg-slate-50 py-16 px-6">
+  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
+    <Hero />
+    <!-- コンテンツエリア -->
+    <div class="p-8 md:p-12 text-center">
+      <div class="max-w-2xl mx-auto">
+        <Contents />
+        <Features />
+        <CTA />
+      </div>
+    </div>
+  </div>
+</section>
+  <FAQ />
+</BaseLayout>

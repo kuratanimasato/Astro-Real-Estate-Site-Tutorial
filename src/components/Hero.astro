@@ -1,0 +1,19 @@
+<!-- コンテナを relative にし、overflow-hidden で角丸を保護 -->
+<div class="relative w-full p-8 md:p-16 text-center text-white overflow-hidden rounded-2xl">
+
+  <!-- 背景画像 (absolute で配置) -->
+  <img
+    src="/image/campain.jpg"
+    alt="背景"
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+
+  <!-- 黒いオーバーレイ (テキストを読みやすくするためのフィルター) -->
+  <div class="absolute inset-0 bg-blue-900/60"></div>
+
+  <!-- コンテンツ (relative で画像の上に重ねる) -->
+  <div class="relative z-10">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">不動産無料査定キャンペーン</h1>
+    <p class="text-blue-100 text-lg">あなたの大切な資産の価値を、プロが正確に算出いたします。</p>
+  </div>
+</div>
