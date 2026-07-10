@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "vitest run"
+    "test": "vitest run",
+    "deploy": "astro build && gh-pages -d dist"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -22,6 +23,7 @@
     "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "vitest": "^4.1.10"
   }
 }
