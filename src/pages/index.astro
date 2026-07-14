@@ -1,10 +1,12 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { getBlogList } from "@/library/microcms";
 
-const latestNews = (await getCollection("news"))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 3);
+const {contents:latestBlogs} = await getBlogList({
+  limit: 3,
+  orders: "-publishedAt",
+});
 
 const company = {
   name: "Sunrise Estate 不動産",
@@ -34,23 +36,25 @@ const company = {
   <section class="bg-slate-50 rounded-3xl p-8 md:p-12">
     <div class="flex justify-between items-center mb-8">
       <h2 class="text-2xl font-bold text-slate-800">最新のお知らせ</h2>
-      <a href="/news" class="text-blue-600 hover:underline font-medium"
+      <a href="/blog" class="text-blue-600 hover:underline font-medium"
         >一覧を見る &rarr;</a
       >
     </div>
 
     <ul class="grid gap-4">
       {
-        latestNews.map((item) => (
+        latestBlogs.map((item) => (
           <li>
             <a
-              href={`/news/${item.id}`}
+              href={`/blog/${item.id}`}
               class="block bg-white p-6 rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all"
             >
               <div class="text-sm text-slate-400 mb-1">
-                {item.data.pubDate.toLocaleDateString("ja-JP")}
+                <time datetime={item.publishedAt}>
+                  {new Date(item.publishedAt).toLocaleDateString("ja-JP")}
+                </time>
               </div>
-              <div class="font-bold text-slate-800">{item.data.title}</div>
+              <div class="font-bold text-slate-800">{item.title}</div>
             </a>
           </li>
         ))

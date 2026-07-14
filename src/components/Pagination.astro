@@ -1,0 +1,45 @@
+---
+interface Props {
+  page: {
+    url: {
+      prev: string | null;
+      next: string | null;
+    };
+    currentPage: number;
+    lastPage: number;
+  };
+
+}
+
+const { page } = Astro.props;
+---
+<nav class="mt-16 flex justify-center items-center gap-2">
+  <a
+    href={page.url.prev}
+    class={`flex items-center justify-center px-4 py-2 rounded-lg border border-gray-300 transition ${!page.url.prev ? 'opacity-50 pointer-events-none' : 'hover:bg-gray-100'}`}
+  >
+    前へ
+  </a>
+
+  <div class="flex items-center gap-1">
+    {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((pageNumber) => (
+      <a
+        href={pageNumber === 1 ? "/blog" : `/blog/${pageNumber}`}
+        class={`flex items-center justify-center w-10 h-10 rounded-lg border ${
+          page.currentPage === pageNumber
+            ? "bg-blue-600 text-white border-blue-600"
+            : "border-gray-300 hover:bg-gray-100"
+        }`}
+      >
+        {pageNumber}
+      </a>
+    ))}
+  </div>
+
+  <a
+    href={page.url.next}
+    class={`flex items-center justify-center px-4 py-2 rounded-lg border border-gray-300 transition ${!page.url.next ? 'opacity-50 pointer-events-none' : 'hover:bg-gray-100'}`}
+  >
+    次へ
+  </a>
+</nav>
