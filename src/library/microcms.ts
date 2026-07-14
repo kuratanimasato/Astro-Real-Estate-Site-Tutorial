@@ -1,6 +1,6 @@
 import type { MicroCMSQueries } from "microcms-js-sdk";
 import { createClient } from "microcms-js-sdk";
-import type { Blog } from "../types/blog";
+import type { Blog } from "@/types/blog";
 
 export const client = createClient({
   serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN,

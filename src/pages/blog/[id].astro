@@ -1,33 +1,38 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getBlogList, getBlogDetail } from "../../library/microcms";
-
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getBlogList, getBlogDetail } from "@/library/microcms";
 
 export async function getStaticPaths() {
-    const { contents: blogs } = await getBlogList();
-    return blogs.map((blog) => ({
-        params: { id: blog.id },
-        props: { blog },
-    }));
+  const { contents: blogs } = await getBlogList();
+  return blogs.map((blog) => ({
+    params: { id: blog.id },
+    props: { blog },
+  }));
 }
 const id = Astro.params.id;
 const blog = await getBlogDetail(id);
-
 ---
+
 <BaseLayout title={blog.title}>
   <article class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
     <header class="mb-10 text-center">
-      <div class="mb-4 flex items-center justify-center gap-4 text-sm text-gray-500">
+      <div
+        class="mb-4 flex items-center justify-center gap-4 text-sm text-gray-500"
+      >
         <time datetime={blog.publishedAt}>
           {new Date(blog.publishedAt).toLocaleDateString("ja-JP")}
         </time>
-        <span class="h-1 w-1 rounded-full bg-gray-300" />
-        <span class="rounded-full bg-blue-50 px-3 py-1 font-medium text-blue-600">
+        <span class="h-1 w-1 rounded-full bg-gray-300"></span>
+        <span
+          class="rounded-full bg-blue-50 px-3 py-1 font-medium text-blue-600"
+        >
           {blog.category.name}
         </span>
       </div>
 
-      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl md:text-5xl leading-tight">
+      <h1
+        class="text-3xl font-extrabold text-gray-900 sm:text-4xl md:text-5xl leading-tight"
+      >
         {blog.title}
       </h1>
 
