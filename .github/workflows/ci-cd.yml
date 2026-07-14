@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  MICROCMS_SERVICE_DOMAIN: dummy
+  MICROCMS_API_KEY: dummy
+
+
 jobs:
   test:
     name: Test
