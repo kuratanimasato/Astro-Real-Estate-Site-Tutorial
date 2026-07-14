@@ -10,6 +10,8 @@ env:
   MICROCMS_SERVICE_DOMAIN: dummy
   MICROCMS_API_KEY: dummy
 
+permissions:
+  contents: write
 
 jobs:
   test:
