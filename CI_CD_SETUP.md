@@ -15,10 +15,10 @@
 
 **実行内容:**
 1. コードのチェックアウト
-2. Bunのセットアップ
-3. 依存関係のインストール (`bun install`)
-4. ユニットテストの実行 (`bun test` - Vitestを使用)
-5. Astroプロジェクトのビルド検証 (`bun run build`)
+2. Node.js 22.xのセットアップ
+3. 依存関係のインストール (`npm ci`)
+4. ユニットテストの実行 (`npm test` - Vitestを使用)
+5. Astroプロジェクトのビルド検証 (`npm run build`)
 6. ビルド成果物（dist/）をアーティファクトとしてアップロード
 
 ### ジョブ2: デプロイ (Deploy)
@@ -93,6 +93,6 @@ git push origin feature/your-feature
 
 ### テストが失敗する場合
 
-1. ローカルで `bun test` を実行して動作確認
-2. 依存関係のバージョンを確認 (`bun install`)
-3. Bun がインストールされているか確認 (`bun --version`)
+1. ローカルで `npm test` を実行して動作確認
+2. 依存関係のバージョンを確認 (`npm ci`)
+3. Node.js 22.x以上がインストールされているか確認 (`node --version`)
